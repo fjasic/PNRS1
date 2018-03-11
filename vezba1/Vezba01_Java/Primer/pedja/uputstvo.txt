@@ -1,0 +1,3 @@
+javac rtrk\pnrs\AnimalKindom.java
+
+java -cp ./ rtrk.pnrs.AnimalKingdom
