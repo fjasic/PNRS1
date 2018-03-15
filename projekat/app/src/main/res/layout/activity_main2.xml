@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="jasic.filip.chatapplication.Main2Activity">
+
+    <EditText
+        android:id="@+id/register_username"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:hint="@string/username" />
+
+    <EditText
+        android:id="@+id/register_password"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/register_username"
+        android:hint="@string/password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/first_name"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/last_name"
+        android:hint="@string/first_name" />
+
+    <EditText
+        android:id="@+id/last_name"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/register_password"
+        android:layout_alignBottom="@+id/register_password"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/register_password"
+        android:hint="@string/last_name" />
+
+    <EditText
+        android:id="@+id/johndoe"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/register_password"
+        android:hint="@string/johndoe"
+        android:inputType="textEmailAddress"/>
+
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/johndoe"
+        android:layout_alignBottom="@+id/johndoe"
+        android:layout_alignStart="@+id/last_name"
+        android:text="@string/gender" />
+
+    <Spinner
+        android:id="@+id/gender_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/gender"
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/gender"></Spinner>
+
+    <CheckBox
+        android:id="@+id/accept_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/johndoe"
+        android:checked="true"
+        android:text="@string/accept_notifications"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/accept_notifications"
+        android:layout_marginStart="15dp"
+        android:text="@string/birth_date" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_below="@+id/textView2" />
+
+    <Button
+        android:id="@+id/register_page_register_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/johndoe"
+        android:layout_toEndOf="@+id/gender"
+        android:text="@string/register" />
+
+
+</RelativeLayout>
