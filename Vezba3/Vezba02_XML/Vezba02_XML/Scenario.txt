@@ -1,0 +1,20 @@
+1. XML
+    1.1 Sta je xml? (eXtensible Markup Language, za cuvanje i prenos podataka,
+        citljiv za ljude i racunar)
+    1.2 Stablo - objasniti organizaciju dokumenta kao stablo
+    1.3 Element
+        1.3.1 Tag
+        1.3.2 Text
+        1.3.3 atributi
+    1.4 Sintaksa
+        1.4.1 Root element - xml dokument moze imati samo jedan koreni element
+        1.4.2 Progol - xml dokument moze sadrzati prolog, prolog nije obavezan
+        1.4.3 Elementi moraju biti zatvoreni
+        1.4.4 Tagovi su case sensitive
+        1.4.5 Elementi moraju biti pravilno ugnjezdeni
+        1.4.6 Vrednosti atributa moraju biti pod navodnicima
+        1.4.7 Komentari (<!-- comment -->)
+    1.5 Namespace
+        1.5.1 Sprecava konflikte u imenovanju elemenata
+        1.5.2 Kako se definise namespace
+        1.5.3 Kako se koristi namespace

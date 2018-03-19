@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookstore>
+    <author xmlns:daunt="http://www.dauntbooks.co.uk"
+        name="Eric Arthur Blair" pseudonym="George Orwell">
+        <daunt:book daunt:title="Animal Farm" daunt:year="1945">
+            <price>500.00</price>
+        </daunt:book>
+        <book title="1984" year="1949"/>
+    </author>
+    <author name="Samuel Langhorne Clemens" pseudonym="Mark Twain">
+        <book title="The Adventures of Tom Sawyer" year="1876"/>
+        <book title="A Dog's Tale" year="1904"/>
+    </author>
+    <author name="Stephen Edwin King">
+        <book title="Carrie" year="1974"/>
+        <book title="The Shining" year="1977"/>
+        <book title="Misery" year="1987"/>
+    </author>
+</bookstore>
