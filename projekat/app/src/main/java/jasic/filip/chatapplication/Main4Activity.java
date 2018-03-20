@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main4Activity extends AppCompatActivity {
@@ -36,12 +35,12 @@ public class Main4Activity extends AppCompatActivity {
             public void onClick(View v) {
                 submitForm();
                 if(submitForm()){
-                Context context = getApplicationContext();
-                CharSequence text = "message is sent";
-                int duration = Toast.LENGTH_SHORT;
+                    Context context = getApplicationContext();
+                    CharSequence text = "message is sent";
+                    int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();}
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();}
             }
         });
     }

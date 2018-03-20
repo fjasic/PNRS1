@@ -20,7 +20,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/logout_list"
         android:layout_marginStart="17dp"
-        android:src="@drawable/ic_action_name" />
+        tools:ignore="ContentDescription" />
+        <!--android:src="@drawable/ic_action_name" ovo gore !-->
+
 
 
     <TextView
@@ -31,5 +33,5 @@
         android:layout_marginStart="24dp"
         android:layout_toEndOf="@+id/image1"
         android:text="@string/my_friend"
-        android:textSize="22dp" />
+        android:textSize="22sp" />
 </RelativeLayout>

@@ -19,7 +19,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="@string/send"
-        android:id="@+id/send_button"/>
+        android:id="@+id/send_button"
+        tools:ignore="RelativeOverlap" />
 
     <EditText
         android:id="@+id/msg"

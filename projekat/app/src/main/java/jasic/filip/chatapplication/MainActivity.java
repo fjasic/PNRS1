@@ -21,12 +21,12 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 submitForm();
-                 if (submitForm()){
-                     Intent intent=new Intent(MainActivity.this,Main3Activity.class);
-                     startActivity(intent);
+                submitForm();
+                if (submitForm()){
+                    Intent intent=new Intent(MainActivity.this,Main3Activity.class);
+                    startActivity(intent);
                 }
-              }
+            }
         });
 
         register.setOnClickListener(new View.OnClickListener() {
