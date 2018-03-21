@@ -14,7 +14,7 @@
     <string name="male">male</string>
     <string name="female">female</string>
     <string name="accept_notifications">Accept Notifications</string>
-    <string name="birth_date">Birth date</string>
+    <string name="birth_date">Select birth date</string>
     <string name="my_friend">my friend</string>
     <string name="message_text">message text</string>
     <string name="empty_message">empty message</string>
