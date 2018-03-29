@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validatePassword() {
         final TextView password =  findViewById(R.id.password_text);
-        if (password.getText().toString().trim().length() <= 6) {
+        if (password.getText().toString().trim().length() < 6) {
             password.setError(getString(R.string.password_6_error));
             password.requestFocus();
             return false;

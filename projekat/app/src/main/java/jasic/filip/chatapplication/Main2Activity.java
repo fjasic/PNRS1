@@ -16,10 +16,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class Main2Activity extends AppCompatActivity {
     private DatePickerDialog.OnDateSetListener dateSetListener;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
@@ -50,9 +50,10 @@ public class Main2Activity extends AppCompatActivity {
                 int month=cal.get(Calendar.MONTH);
                 int day=cal.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog dialog = new DatePickerDialog(Main2Activity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,dateSetListener,
+                DatePickerDialog dialog = new DatePickerDialog(Main2Activity.this,android.R.style.Theme_Material_Dialog_MinWidth,dateSetListener,
                         year,month,day);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getDatePicker().setMaxDate(new Date().getTime());
                 dialog.show();
             }
         });
@@ -83,7 +84,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private boolean validatePassword() {
         EditText password = findViewById(R.id.register_password);
-        if (password.getText().toString().trim().length() <= 6) {
+        if (password.getText().toString().trim().length() < 6) {
             password.setError(getString(R.string.password_6_error));
             password.requestFocus();
             return false;
@@ -113,6 +114,7 @@ public class Main2Activity extends AppCompatActivity {
         if(!validatePassword()){
             return false;
         }
+
         return validateEmail();
     }
 }

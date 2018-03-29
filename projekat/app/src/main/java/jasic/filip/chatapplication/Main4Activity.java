@@ -40,7 +40,9 @@ public class Main4Activity extends AppCompatActivity {
                     int duration = Toast.LENGTH_SHORT;
 
                     Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();}
+                    toast.show();
+                    final EditText msg=findViewById(R.id.msg);
+                msg.setText("");}
             }
         });
     }
