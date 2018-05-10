@@ -1,0 +1,15 @@
+1 Service
+    1.1 Objasniti sta je servis
+    1.2 Napaviti projekat (ServiceExample - rtrk.pnrs.serviceexample)
+    1.3 Napraviti ExampleService programsku klasu (File->New->Service->Service)
+    1.4 Objasniti metode zivotnog ciklus servisa
+    1.5 Pokrenuti servis iz MainActivity programske klase (startService)
+    1.6 Zaustaviti servis iz MainActivity programske klase (stopService)
+2 Thread
+    2.1 Upoznati studente sa programskom klasom Thread
+    2.2 Napraviti ThreadExample klasu
+    2.3 Pokrenuti ThreadExample u onCreate metodi servisa
+3 Handler
+    3.1 Upoznati studente sa programskom klasom Handler
+    3.2 Napraviti RunnableExample klasu
+    3.3 Pokrenuti RunnableExample u onCreate metodi servisa
