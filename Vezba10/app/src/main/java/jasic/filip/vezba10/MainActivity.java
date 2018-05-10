@@ -17,14 +17,12 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import jasic.filip.vezba10.R;
-
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ListView.OnItemClickListener, ListView.OnItemLongClickListener{
 
     private HttpHelper httpHelper;
     private ArrayAdapter<String> mListAdapter;
-    public static String BASE_URL = "http://192.168.0.14:8080";
+    public static String BASE_URL = "http://192.168.88.241:8080";
     public static String GET_MOVIE_LIST = BASE_URL + "/api/movies/";
     public static String MOVIE_URL = BASE_URL + "/api/movie/";
     private MovieModel [] movieModels;
@@ -40,14 +38,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /*used to handle UI components in separate thread*/
         handler = new Handler();
 
-        addNewMovieButton = (Button) findViewById(R.id.addMovie);
+        addNewMovieButton = findViewById(R.id.addMovie);
         addNewMovieButton.setOnClickListener(this);
-        getMovies = (Button) findViewById(R.id.getMovies);
+        getMovies = findViewById(R.id.getMovies);
         getMovies.setOnClickListener(this);
 
         httpHelper = new HttpHelper();
         mListAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
-        ListView list = (ListView) findViewById(R.id.list);
+        ListView list = findViewById(R.id.list);
         list.setAdapter(mListAdapter);
         list.setOnItemClickListener(this);
         list.setOnItemLongClickListener(this);
@@ -91,8 +89,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         int id = v.getId();
         if(id == R.id.addMovie) {
-            Intent intent = new Intent(MainActivity.this, AddMovieActivity.class);
-            startActivity(intent);
+           Intent intent = new Intent(MainActivity.this, AddMovieActivity.class);
+           startActivity(intent);
         } else if(id == R.id.getMovies) {
             // a potentially  time consuming task
             mListAdapter.clear();
@@ -104,9 +102,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             movieModels = new MovieModel[jsonArray.length()];
                             for(int i = 0; i < jsonArray.length(); i++) {
                                 final int index = i;
-                                // TODO: Parse response from server
-                                // Create new MovieModel object (note that only movie id and name are needed for this)
-
+                                JSONObject jsonobject = jsonArray.getJSONObject(i);
+                                movieId = jsonobject.getString("id");
+                                name = jsonobject.getString("name");
+                                MovieModel movieModel = new MovieModel(movieId, name);
+                                movieModels[i] = movieModel;
                                 handler.post(new Runnable(){
                                     public void run() {
                                         mListAdapter.add(movieModels[index].getName());

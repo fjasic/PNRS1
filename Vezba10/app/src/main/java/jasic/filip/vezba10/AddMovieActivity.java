@@ -1,6 +1,5 @@
 package jasic.filip.vezba10;
 
-import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +12,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-
-import jasic.filip.vezba10.R;
 
 public class AddMovieActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,12 +26,12 @@ public class AddMovieActivity extends AppCompatActivity implements View.OnClickL
 
         httpHelper = new HttpHelper();
         handler = new Handler();
-        nameEdit = (EditText) findViewById(R.id.form_name);
-        genreEdit = (EditText) findViewById(R.id.form_genre);
-        yearEdit = (EditText) findViewById(R.id.form_year);
-        durationEdit = (EditText) findViewById(R.id.form_duration);
-        directorEdit = (EditText) findViewById(R.id.form_director);
-        addMovie = (Button) findViewById(R.id.add_movie);
+        nameEdit = findViewById(R.id.form_name);
+        genreEdit = findViewById(R.id.form_genre);
+        yearEdit = findViewById(R.id.form_year);
+        durationEdit = findViewById(R.id.form_duration);
+        directorEdit = findViewById(R.id.form_director);
+        addMovie = findViewById(R.id.add_movie);
         addMovie.setOnClickListener(this);
     }
 
@@ -45,16 +42,17 @@ public class AddMovieActivity extends AppCompatActivity implements View.OnClickL
                 public void run() {
                     JSONObject jsonObject = new JSONObject();
                     try {
-                        // TODO: Fill in JSONObject with details about new movie
-
+                        jsonObject.put("name", nameEdit.getText().toString());
+                        jsonObject.put("genre", genreEdit.getText().toString());
+                        jsonObject.put("year", yearEdit.getText().toString());
+                        jsonObject.put("duration", durationEdit.getText().toString());
+                        jsonObject.put("director", directorEdit.getText().toString());
                         final boolean success = httpHelper.postJSONObjectFromURL(MainActivity.MOVIE_URL, jsonObject);
                         handler.post(new Runnable(){
                             public void run() {
                                 Toast.makeText(AddMovieActivity.this, "Adding new movie: " + success, Toast.LENGTH_LONG).show();
                             }
                         });
-                        Intent intent = new Intent(AddMovieActivity.this, MainActivity.class);
-                        startActivity(intent);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

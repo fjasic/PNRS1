@@ -12,7 +12,6 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Iterator;
 
-
 public class DetailsActivity extends AppCompatActivity {
 
     private HttpHelper httpHelper;
@@ -25,7 +24,7 @@ public class DetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details);
 
         httpHelper = new HttpHelper();
-        textView = (TextView) findViewById(R.id.movie_text);
+        textView = findViewById(R.id.movie_text);
 
         Bundle intent = getIntent().getExtras();
         if(intent!=null) {
@@ -49,26 +48,21 @@ public class DetailsActivity extends AppCompatActivity {
     private String formMovieTextFromJson(JSONObject movieJson) throws JSONException {
         Iterator<?> keys = movieJson.keys();
         String str = "Movie: \n";
-
-        // TODO: Parse response from server
-        // Parsed string should look like:
-        //
-        //  key: value
-        // -----------------------------
-        //  name: movieName
-        //  genre: movieGenre
-        //  year: 9999
-        //  duration: 9999
-        //  director: FirstName LastName
-
-        // Note: value can be JSONArray, too!
-
         while(keys.hasNext()) {
             String key = (String)keys.next();
             if (!(movieJson.get(key) instanceof JSONArray)) {
-
+                str = str.concat(key.toUpperCase());
+                str = str.concat(":");
+                str = str.concat(movieJson.get(key).toString());
+                str = str.concat("\n");
             } else {
-
+                str = str.concat(key.toUpperCase());
+                str = str.concat(":");
+                JSONArray jsonArray = (JSONArray) movieJson.get(key);
+                for (int i = 0, size = jsonArray.length(); i < size; i++) {
+                    str = str.concat(jsonArray.getString(i));
+                    str = str.concat("\n");
+                }
             }
         }
         return str;

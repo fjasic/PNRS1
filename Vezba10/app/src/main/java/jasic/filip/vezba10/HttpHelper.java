@@ -19,49 +19,109 @@ public class HttpHelper {
 
     /*HTTP get json Array*/
     public JSONArray getJSONArrayFromURL(String urlString) throws IOException, JSONException {
-        // TODO: Implement HTTP GET request for retrieving JSON Array that contains array of movies.
-        //    - method - GET
-        //    - headers - Accept: application/json
-        //    - read timeout - 1 second
-        //    - connect timeout - 15 seconds
-        // Check response code - if it is 200, return new JSONArray, otherwise return null
-
-        return null;
+        HttpURLConnection urlConnection = null;
+        java.net.URL url = new URL(urlString);
+        urlConnection = (HttpURLConnection) url.openConnection();
+        /*header fields*/
+        urlConnection.setRequestMethod("GET");
+        urlConnection.setRequestProperty("Accept", "application/json");
+        urlConnection.setReadTimeout(10000 /* milliseconds */ );
+        urlConnection.setConnectTimeout(15000 /* milliseconds */ );
+        try {
+            urlConnection.connect();
+        } catch (IOException e) {
+            return null;
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line + "\n");
+        }
+        br.close();
+        String jsonString = sb.toString();
+        Log.d("HTTP GET", "JSON data- " + jsonString);
+        int responseCode =  urlConnection.getResponseCode();
+        urlConnection.disconnect();
+        return responseCode == SUCCESS ? new JSONArray(jsonString) : null;
     }
 
     /*HTTP get json object*/
     public JSONObject getJSONObjectFromURL(String urlString) throws IOException, JSONException {
-        // TODO: Implement HTTP GET request for retrieving Movie whose id is forwarded.
-        //    - method - GET
-        //    - headers - Accept: application/json
-        //    - read timeout - 1 second
-        //    - connect timeout - 15 seconds
-        // Check response code - if it is 200, return new JSONObject, otherwise return null
+        HttpURLConnection urlConnection = null;
+        java.net.URL url = new URL(urlString);
+        urlConnection = (HttpURLConnection) url.openConnection();
+        /*header fields*/
+        urlConnection.setRequestMethod("GET");
+        urlConnection.setRequestProperty("Accept", "application/json");
+        urlConnection.setReadTimeout(10000 /* milliseconds */ );
+        urlConnection.setConnectTimeout(15000 /* milliseconds */ );
+        try {
+            urlConnection.connect();
+        } catch (IOException e) {
+            return null;
+        }
+        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = br.readLine()) != null) {
+            sb.append(line + "\n");
+        }
+        br.close();
 
-        return null;
+        String jsonString = sb.toString();
+        Log.d("HTTP GET", "JSON obj- " + jsonString);
+        int responseCode =  urlConnection.getResponseCode();
+        urlConnection.disconnect();
+        return responseCode == SUCCESS ? new JSONObject(jsonString) : null;
     }
 
     /*HTTP post*/
     public boolean postJSONObjectFromURL(String urlString, JSONObject jsonObject) throws IOException, JSONException {
-        // TODO: Implement HTTP POST request for sending new Movie object to server.
-        //    - method - POST
-        //    - headers - Accept: application/json
-        //              - Content-Type", application/json;charset=UTF-8
-        //    - read timeout - 1 second
-        //    - connect timeout - 15 seconds
-        // Check response code - if it is 200, return true, otherwise return false
-
-        return false;
+        HttpURLConnection urlConnection = null;
+        java.net.URL url = new URL(urlString);
+        urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("POST");
+        urlConnection.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+        urlConnection.setRequestProperty("Accept","application/json");
+        /*needed when used POST or PUT methods*/
+        urlConnection.setDoOutput(true);
+        urlConnection.setDoInput(true);
+        try {
+            urlConnection.connect();
+        } catch (IOException e) {
+            return false;
+        }
+        DataOutputStream os = new DataOutputStream(urlConnection.getOutputStream());
+        /*write json object*/
+        os.writeBytes(jsonObject.toString());
+        os.flush();
+        os.close();
+        int responseCode =  urlConnection.getResponseCode();
+        Log.i("STATUS", String.valueOf(urlConnection.getResponseCode()));
+        Log.i("MSG" , urlConnection.getResponseMessage());
+        urlConnection.disconnect();
+        return (responseCode==SUCCESS);
     }
 
     /*HTTP delete*/
     public boolean httpDelete(String urlString) throws IOException, JSONException {
-        // TODO: Implement HTTP DELETE request for removing Movie from server.
-        //    - method - DELETE
-        //    - headers - Accept: application/json
-        //              - Content-Type", application/json; charset=UTF-8
-        // Check response code - if it is 200, return true, otherwise return false
+        HttpURLConnection urlConnection = null;
+        java.net.URL url = new URL(urlString);
+        urlConnection = (HttpURLConnection) url.openConnection();
+        urlConnection.setRequestMethod("DELETE");
+        urlConnection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        urlConnection.setRequestProperty("Accept","application/json");
+        try {
+            urlConnection.connect();
+        } catch (IOException e) {
+            return false;
+        }
+        int responseCode = urlConnection.getResponseCode();
 
-        return false;
+        Log.i("STATUS", String.valueOf(responseCode));
+        Log.i("MSG" , urlConnection.getResponseMessage());
+        urlConnection.disconnect();
+        return (responseCode==SUCCESS);
     }
 }
