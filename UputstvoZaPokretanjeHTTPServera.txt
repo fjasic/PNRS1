@@ -1,0 +1,24 @@
+Instruction for WINDOWS OS
+------------------------------------------------------------------------------------------------------------
+1. STEP - Install dependencies
+*********************************************************
+a) npm & node.js - https://nodejs.org/en/download
+b) mongoDB - https://www.mongodb.com/download-center/
+
+
+2. Setup MongoDB
+*********************************************************
+a) create a directory C:\data\db
+b) add MongoDB path to environment variables (if not automatically added) - C:\Program Files\MongoDb\Server\x.x\bin
+c) START mongod 
+	- position in cmd prompt to path - C:\Program Files\MongoDb\Server\x.x\bin\
+	- start mongod.exe 
+	- mongodb server is running on port 27017 by default!
+
+3. Install Node.js dependencies and Start Nodejs server
+*********************************************************
+a) open cmd prompt and go to given node.js server directory where "package.json" file is placed
+b) type command: "npm install" ... now wait for all packages to get installed
+c) start server : "node index.js" - node.js server is running on port 8080 and is ready to be used :)
+------------------------------------------------------------------------------------------------------------
+

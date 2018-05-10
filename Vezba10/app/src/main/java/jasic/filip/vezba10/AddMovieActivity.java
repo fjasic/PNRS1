@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import mmilica.myapplication.R;
+import jasic.filip.vezba10.R;
 
 public class AddMovieActivity extends AppCompatActivity implements View.OnClickListener{
 

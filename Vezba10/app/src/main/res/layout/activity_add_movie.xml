@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="mmilica.myapplication.MainActivity">
+    tools:context="jasic.filip.vezba10.MainActivity">
 
     <EditText
         android:id="@+id/form_name"
