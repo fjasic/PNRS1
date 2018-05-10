@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import mmilica.myapplication.R;
+import jasic.filip.vezba10.R;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ListView.OnItemClickListener, ListView.OnItemLongClickListener{
